@@ -1,0 +1,324 @@
+видос про резюме - о том, что нужен ютюб канал и git для возможности исключения этапа собеса с hr, или начальником. в перспективе обязательно.
+
+в моём случае будет. vanarasugriva@gmail.com - for job
+legalfun@ya.ru
+
+видосы по linux:
+
+01. ya and ssh:
+
+cloud.ya.ru
+after ssh-keygen ssh keys are here: ~/.ssh/id.rsa* by default, or other location
+
+про ssh keys. аналогия с замком и ключём, где замок - .pub на удалённом хосте, а ключ - key на тачке с которой подключаешься 
+ssh -i /путь до ключа login@[host_ip]
+
+~/.ssh/known_host - saved session parameters: ip, dns, key location...
+~/.ssh/config - aliases for session
+~./ssh/autorized_keys - remote users keys 
+______
+
+02. navigation:
+
+/proc /bin /etc /home ... 
+$ #
+.. ~ / . 
+cd, ls, pwd, touch, mkdir, cp, mv, rm -r(recursive)f(force)y(yes)l(ist)h(umanize)a(ll)
+echo > / >> file # to rewrite / write 
+______
+
+03. history 
+arrows # to novigate
+history # to all history
+~/.bash_history # buffer locate
+^r # for find
+ cmd # bigin with space out of history
+~/.bashrc - config for history - HISTORYSIZE
+______
+
+04. text:
+
+echo, cat, man, less, q - quit, nano, vim, wc
+grep 'pattern' file # or -r /dir/ to find in directory
+______
+
+05. permissions:
+
+---------
+usrgrpall
+r - read, w - write, x - execute
+chmod xxx file
+xxx - from permission table (700, 777, +x, ...)
+______
+
+06. root, sudo:
+
+sudo -i # for becoming root
+sudo !! # for exec prev cmd as root
+# for adding sudo permissions:
+usermod -aG sudo username # add user in sudo group
+#or edit file:
+/etc/sudoers.d/90... # there are sudoers users.
+visudo # for edit sudo config
+groups username # user's groups
+^d # for logout
+
+______
+
+07. vim:
+
+navigate:
+hjkl, wb, ^, $, gg, G
+i, o, O, a, A
+dd
+dia
+ZZ - !wq
+num, cmd
+d(elete)a(ll)w(ord)
+c(change)i(insert)w(word) # or '"[(... )]"'
+u - undo, ^r - redo
+. - last action
+
+______
+
+08. log cron
+
+cmd >/>> file 2>&1 # to stout and sterr to one streams
+crontab -e # to edit cron task service: roles: crontab.guru
+/var/log/syslog # cron events 
+
+______
+
+09. processes:
+
+ps aux # | less... / | grep...
+top, htop
+
+nohup cmd & # for run cmd process in bg and out in ./nohup.out
+
+kill -9 procid
+
+______
+
+10. pyenv
+
+apt-get update
+# https://realpython.com/intro-to-pyenv/ - instruction for installation
+
+exec "$SHELL" # for restart bash
+pyenv virtualenv {version} project_name # for init new env
+
+______
+
+11. ports:
+
+pip install flask
+flask run --host=0.0.0.0 # for running web
+sudo apt install net-tools # for netstat install
+netstat -tulpn (mnemo: тюльпан) # for ports list view
+LISTEN - занят
+
+    -t по протоколу TCP
+    -u по протоколу UDP
+    -l все открытые порты (LISTEN)
+	-p но с названиями процессов и PID-ами
+    -n без резолва IP/имён
+
+______
+
+12. systemd:
+
+systemctl list-unit-files | grep enabled
+
+for adding start flask web as service:
+
+sudo vim /etc/systemd/system/site.service 
+
+[Unit]
+Description=<a description of your application>
+After=network.target
+
+[Service]
+User=<username>
+WorkingDirectory=<path to your app>
+ExecStart=<app start command>
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+journalctl -u service_name.service
+
+systemctl start/stop/status/restart service_name
+
+______
+
+13. supervisor:
+
+apt install supervisor
+
+# from 
+echo_supervisor_conf cmd out
+[inet_http_server]
+# ip (0.0.0.0), port, user, passwd...
+to /etc/supervisor/supervisord.conf
+
+systemctl stop / start supervisor
+
+netstat -tulpn # for check port status
+
+google: supervisor run python script
+# to /etc/supervisor/conf.d/test_proc.conf : cmd, file, dir, out dir...
+supervisorctl reread
+supervisorctl update
+
+______
+
+14. docker:
+
+apt install docker.io
+docker ps # to view container list, adresses and ports for connection
+usermod -aG docker $USER # to add yourself user to docker group
+docker run -d -p 80 -h 0.0.0.0 tutum/hello-world # -d - detach mod, -p - port, -h - host
+apt install docker-compose
+google: docker-compose example for testing
+
+______
+
+15. users:
+
+adduser username
+ssh-keygen # on host from 
+cat key_name.pub # copy key
+# to:
+/home/username/.ssh/autoized_keys
+w #(who) to view active session
+usermod -aG docker username
+usermod -aG sudo username
+deluser username sudo # for delete from group
+pkill -KILL -u username # for logout user
+
+______
+
+16. git
+apt install git
+git init
+# after new files added:
+git status
+git add .
+git config --global user.email "user@email"
+git config --global user.name "user_name"
+git commit -m 'comment';
+git clone
+github.com
+settings - ssh keys
+git push
+
+______
+
+
+
+
+
+
+
+
+______
+
+
+| pipe - труба:
+
+cat file_name | uniq -c - for counting uniq strings 
+
+sudo ps aux | grep [p]attern | awk '{print $2}' | xargs kill -9 - for killng finded process
+or simlest - pkill -f pattern
+
+______
+
+29. tmux:
+
+tmux [ls / attach -t(terminal) {session_name}]
+^b - to enter tmux cmds:
+% - split | | |	______
+" - split		______
+arrows to novigate between screens
+d - detach
+^d - to exit tmux
+______
+
+30. hot keys:
+
+^/alt + b,f - novigate symbol/word back*, for*
+^u - to del from cursor to begin
+^k - 					to end
+^w - 		word before
+^y - paste deleted
+^r - histoRy finding
+alt+r - return to result history finding
+^ / alt + d - delete symbol/word
+^h - backspace
+______
+
+31. tar:
+
+tar -c(reate) / (e)x(tract) z(ip)f(ile)v(verbose or visual) archive_file_name(.tar.gz or tgz) pass/to/files/or/folder
+
+______
+
+32. xargs:
+
+# to kill few processes from grep:
+ps aux | grep "[p]attern" | awk'{print $2}' | xargs -p kill -9 
+# or grep "pattern" | grep -v grep .. xargs without arguments to string out
+
+# to print string with all users:
+cut -d: f1 < /etc/passwd | sort | xargs
+
+______
+
+33. digital ocean:
+
+cat ./ssh/id_rsa.pub
+to web console key 
+ssh -i .ssh/id_rsa.pub root@ip
+adduser admin
+usermod -aG sudo username
+su - username
+mkdir .ssh
+vim autorized_keys # copy ./ssh/id_rsa.pub 	
+
+# for disable passwd entering for sudo -i:
+sudo visudo
+add $USER ALL=(ALL) NOPASSWD: ALL # $USER - your user name
+
+______
+
+34. ping:
+ping -c [NN] address # packets count
+ping -c 1 google.com | grep "64 bytes" | cut -d " " -f 4 # -d delimeter. for getting ip
+
+ipsweep.sh:
+
+if ["$1" == ""]
+then
+echo "Enter first 3 octets of distination address: "
+else
+for ip in `seq 1 254` ; do
+ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
+done
+fi
+
+______
+
+35. find:
+
+find /dir/.. -type f -name "pattern" -exec grep 'pattern' {} \;
+fc # for edit cmd in default editor
+
+______
+
+36. curl:
+
+curl -L address # -L for redirection out enable, -O - for save out to file
+
+
