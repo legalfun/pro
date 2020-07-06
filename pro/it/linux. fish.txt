@@ -200,7 +200,7 @@ pkill -KILL -u username # for logout user
 
 ______
 
-16. git
+16. git:
 apt install git
 git init
 # after new files added:
@@ -216,9 +216,13 @@ git push
 
 ______
 
+17. bash script:
 
-
-
+crontab -e
+* * * * * sh /script_name.sh >> file.log 2>&1 # for run script and out stuot and sterr to log file in cron
+tail -f file log # for view file online
+vim script.sh
+cd /pass/to/git/repo && git pull # for git pull in script.sh
 
 
 
