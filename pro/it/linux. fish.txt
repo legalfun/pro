@@ -224,6 +224,29 @@ tail -f file log # for view file online
 vim script.sh
 cd /pass/to/git/repo && git pull # for git pull in script.sh
 
+______
+
+18. postgres:
+
+sudo apt-get install postgresql postgresql-contrib
+netstat -tulpn 
+sudo su - postgres # for postgres user login@
+psql
+/du	# users list
+/d	# db list
+pg role - database - schema - objects
+select 'string' for init new table
+create table table_name as select 'string' as col1; # for init table
+select * from table_name;
+CREATE USER user_name;
+\password user_name
+psql -U user_name -d postgres -h 127.0.0.1 -W
+grant select on table_name to user_name # adding permissions
+create schema schema_name
+create table schema_name as select 'string' as 'col1';
+grand usage on schema schema_name to user_name;
+
+
 
 
 
