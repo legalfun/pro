@@ -1,0 +1,39 @@
+1. Экз. Associate Cloud Engineer.
+
+Подготовка:
+	course: GCP Fundamentals for AWS professional
+	course: A Cloud Guru. (Udemy: Google Certified Associate Cloud Engineer Sertification)
+	books: Official Google Cloud Certified Associate Cloud Engineer Study Guide
+	for practice: QuickLabs Quests: GCP Essentials, Cloud Architecture
+	docs: Google recommended best practices. FAQ
+	youtube: Google Cloud Platform channel
+	tests: BrainCert - site
+	official practice test - 20 questions
+
+Знать:
+	Cloud Storage - storage classes, versioning, object status, lifecycles
+	gcloud - cmds and cloud cfgs
+	AppEngine - how to split, update, deploy, migrate
+	Kubernetes - components understanding, kubectl cmds and gcloud cmds
+	SQL Datastores: - when to use Cloud SQL, Cloud Spanner, BigQuery
+	NoSQL - when to use: BigTable, DataStore, FireStore
+	VPC - shared VPC organization only, Custom VPC, VPC beetween projects, peering, VPN
+	Beeling Account, linking to project, change billing, Exports to Cloud Storage and BigQuery
+	know where you use AutoHealing (Manage Group), Auto-Upgrade (k8s), Auto-Repair(k8s)
+	StackDriver monitoring, logs, exports, activity logs
+	SSH key management for one instance and for all instances in the Project
+	How to make login to Windows from console and from gcloud
+	Network firewall rules, allow/deny, priority of rules
+	Allowed maximal /8 and minimal /29 CIDR for subnet
+	IAM, Service accounts, copy role to another project
+	Predifined roles for BigQuery, CloudSQL, Billing - know permissions
+	Permission while working with few project and Organization
+	
+2. Billing account
+
+cloud.google.com - sign in/get started for free/console - activate - ... card number
+
+Billing account - для привязки credit card
+Project - линкуется к Billing account - тут создаются ресурсы
+
+Billing - Account management
