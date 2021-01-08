@@ -37,3 +37,54 @@ Billing account - для привязки credit card
 Project - линкуется к Billing account - тут создаются ресурсы
 
 Billing - Account management
+
+3.
+ 
+Google Cloud Console
+select project new project (example: PRODUCTION, STAGING, DEVELOPMENT)
+manage projects - create project delete project (for pending deletion)
+customizing GCC pannel... 
+cloudshell (linux debian cli for GCP) # for any project in one place
+gcloud projects list # to view projects
+gcloud auth list # to view users
+
+4.
+
+Compute engine
+create minimal config. centos7.
+...
+Название	Зона	Рекомендация	Используется	Внутренний IP-адрес	Внешний IP-адрес	Подключиться	
+adv-it-webserv	europe-north1-a	10.166.0.2 (nic0)	35.228.55.120 	 	
+...
+ssh
+yum install httpd
+vim /var/www/html/index.html
+<h1>Welcome to ADV-IT CGP Web Page on Linux Centos7 in Google Cloud!</h1>
+service httpd restart
+# or echo "<h1>Welcome to ADV-IT CGP Web Page on Linux Centos7 in Google Cloud!</h1>" > /var/www/html/index.html && service httpd restart
+click on outer ip to open page in new tab
+
+5. 
+
+Windows Web Server
+Windows 2019 Datacenter
+RDP
+Set password
+...
+WebServer
+C:/inetpub/wwwroot
+PowerShell
+notepad index.html
+<h1>Welcome to ADV-IT Web Server on Windows 2019 Server IIS on GCP!</h1>
+
+6. install and setup cloud sdk/gcp cli on windows
+
+gcloud windows: google cloud sdk installer
+gcloud --version
+gcloud init
+...
+
+7. install and setup cloud sdk/gcp cli on linux
+https://cloud.google.com/sdk/docs/install#deb
+
+
