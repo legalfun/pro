@@ -1,0 +1,93 @@
+1.
+
+Virtual Servers - EC2 Instances
+Virtual Network - VPC
+Unlimited Web Space - S3 Bucket
+Web Sites Hosting - S3 Web Hosting
+Domain registrations, DNS - Route53
+SQL and NoSQL Databases - RDS, DynamoDB
+Infrastructure as code - Cloud Formation
+Automation - Elastic Beanstalk
+DevOps
+
+And many more...
+
+amason web services
+microsoft azure
+google cloud platform
+
+SaaS - software as a service
+PaaS - platform as a service
+IaaS - Infrastructure as a service
+
+edu resources: a cloud guru
+
+
+Amazon Web Services - AWS Cloud Infrastructure
+
+Это Хорошее будущее в Карьере IT
+Один Cloud Engineer заменит 3 разных людей:
+System Engineer
+Network Engineer
+Database Engineer/Administrator
+
+Ссылки из видео:
+https://www.gartner.com/doc/reprints?...
+https://www.cloudcomputing-news.net/n...
+https://www.forbes.com/sites/louiscol...
+
+______
+
+2. Sertificates:
+	
+	1. solution architect (main) -> solution architect professional
+	2. developer (addons of 1) - devops enginer professional
+	3. sysops administrator - devops enginer professional
+		big data / advanced networking
+	
+Region - географическое место расположения
+Availability Zone - изолированный дата центр
+
+______
+
+3. Services:
+
+EC2 - virtual servers
+Elastic Load Balancer
+Elastic Beanstalk - automation
+CloudFront - cashing for increasing
+CloudWatch - monitoring
+S3 (simple storage service)
+Glacer (like s3, but for archiving - more slow, low coast)
+EFS - Elastic File System 
+Cloudformation - infrastructure in code
+OpsWorks - for shief - like ansible, puppet...
+RDS - relation data system - DB like SQL...
+DynamoDB - NoSQL 
+Redshift - for data analyze
+EMR - for big data management
+IAM - access management like windows AD
+VPC - virtual private cloud (for network engeneering: routing tables, firewall rules...)
+Route53 - DNS
+SES - Simples Exchange Services (e-mail)
+SNS - Simple Notification Services (e-mail, sms...)
+SQS - ...
+______
+
+4. free account
+
+for 1 year
+
+______
+
+5. IAM
+
+______
+
+6.
+
+
+
+
+	
+

@@ -1,0 +1,84 @@
+disks:
+
+fdisk -l # to show disks info
+
+lsblk # tree like mode
+
+cfdisk [disk name.. sda, sdb..] # to manage disk visual like mode
+# label type - set fs type (ntfs - dos)
+# write - to commit changes
+# q to exit
+
+mkfs.ntfs -f #format /dev/[disk name sda sdb...]
+
+mkdir /media/hdd2 # to create place for mount hdd2
+chmod 777 hdd2 # to change permission
+
+vim /etc/fstab # edit for auto mount
+
+/dev/[disk name sda sdb] /media/hdd2 ntfs default 0 0
+
+:wq
+
+mount /media/hdd2 # to mount
+
+ln -s /media/hdd2 ~/Desktop/Dissk2 # to create symbolik link on Desktop
+
+______
+
+ip, hostname:
+
+hostname
+/etc/hostname 
+/etc/hosts
+reboot now
+
+ifconfig
+ip a
+
+vim /etc/network/interfaces
+
+auto # ifname eth0 enp0...
+iface # ifname eth0 enp0... static
+	address [ip]
+	netmask [mask]
+	gateway [gw]
+	dns-nameservers [dns, dns]
+
+:wq
+
+ifdown ifname 
+ifup ifname
+# or
+reboot
+# ? or service nerwork restart (/etc/init.d/networking restart)
+
+______
+
+ssh
+? kali linux
+ssh [ip]
+connection refused
+#'couse 22 port is locked on host
+
+service ssh status
+inactive # not activate
+service ssh start
+not found # not install
+apt-get install openssh-server
+cat /etc/passwd # to view users list
+w - who alias
+
+______
+
+cron:
+
+crotab -e
+
+min hour day month dayweek command >> /home/mylog.log
+num, num for some variables
+:wq
+
+/var/spool/cron/crontabs/user
+/var/log/syslog # system history
+

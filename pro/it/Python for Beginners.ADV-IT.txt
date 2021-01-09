@@ -1,0 +1,139 @@
+10. Условные операторы if-elif-else.mp4
+11. Словари Часть1.mp4
+12. Словари Часть2.mp4
+
+""" Creation """
+
+dictionary_name = {
+     'feature1': '*',	# string value
+     'feature2': [\d],	# number value
+     'feature3': ['*', '*', '*']	# array
+	 ...
+	 'feature\d': ... 
+ }
+
+""" Multi...Expansion """
+
+all_dict = []
+
+for _ in range(d, d): all_dict.append(dictionary_name) # for copying values like link to memory
+for _ in range(d, d): all_dict(dictionary_name.copy()) # for copying variables
+
+""" Modifications """
+
+all_dict[\d]['feature\d'] = 'string'
+all_dict[\d]['feature\d'] += \d
+
+""" Out """
+
+for any in all_dict: print(any)
+
+print(dictionary_name.keys())
+print(dictionary_name.values())
+
+13. 
+
+input(...)
+
+14. Функции Часть1.mp4
+15. Функции Часть2.mp4
+
+dif function_name(firest_arg,...,last_arg):
+
+16. Использование Модулей.mp4
+17. Классы Часть1.mp4
+18. Классы Часть2.mp4
+19. Работа с Файлами"},"url" ".mp4
+20. Перехват Ошибок.mp4
+21. Использование JSON.mp4
+
+
+22. Аргументы коммандной строки.mp4
+
+if sys.argv[1] = dahdi:
+	dahdi.ini -> instance_name to path
+elif sys.argv[2] = volte:
+	voltegw.ini -> change
+	
+
+
+23. Регулярные Выражения Часть1.mp4
+24. Регулярные Выражения Часть2.mp4
+
+import re
+
+
+
+
+25. PyGame - Установка и запуск игр.mp4
+26. PyGame - Управление Картинкой.mp4
+27. PyGame - Управление Картинкой при удерживании.mp4
+28. PyGame - Снегопад Анимация.mp4
+29. Конвертирование .py в .exe.mp4
+
+not recomended, but if neeled:
+
+1.download pyinstaller
+2.download pywin32 for your python version
+3.install pywin32
+4.cmd - pip install pefile
+5.cmd - pip install pywin32
+6.unzip pyinstaller
+7.cp your.py pyinstaller
+8.cmd - python.exe pyinstaller.py your.py --onefile
+9.pyinstaller/your/dist/your.exe
+
+30. Работа с Базами Данных SQL Server.mp4
+
+# install pypyodbc module
+# example on test databace northwind
+
+import pypyodbc
+
+mySQLServer = "Computer_name_or_ip_address/SQLServer_name"
+myDataBase = "northwind"
+
+connection = pypyodbc.connect('Driver={SQL Server};'
+'Server=' + mySQLServer + ';'
+'Database=' + myDataBase + ';'
+#	if required:
+#	'uid=user_name;'
+#	'pwd=user_password;')
+
+cursor = connection.cursor
+
+mySQLQuery = ("""
+	SELECT column\d, column\d,..., column\d
+	FROM dbo.table_name # dbo.Customers in example
+	WHERE column_name = 'look_for,_string'
+
+cursor.execute(mySQLQuery)
+results = cursor.fetchall()
+
+for row in results:
+	column\d_name = row[0]
+	column\d_name = row[1]
+	...
+	column\d_name = row[last\d]
+
+"""OUT"""
+
+print('text: ' + str(column\d_name) + 'text: ' + str(column\d_name) '...' + str(column\d_name))
+
+connection.close
+
+
+
+
+
+
+
+
+
+
+31. Конвертирование .py в Linux bin.mp4
+32. Установка PyCharm под Linux.mp4
+33. Работа с Интернетом  GET, POST, Download.mp4
+34. Django Часть1- Установка и первый проект.mp4
+35. Django Часть2 -  Создание первого Сайта.mp4
+36. Django Часть3 -  Создание второго Сайта из HTML.mp4

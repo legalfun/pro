@@ -1,0 +1,36 @@
+HAProxy - Бесплатный LoadBalancer
+haproxy.org
+
+sudo apt-get install haproxy
+service haproxy status
+haproxy -v # version
+
+vim /etc/haproxy/haproxy.conf
+
+...
+
+simple config:
+
+#======
+
+frontend my_http_front
+	bind *:80 # requests from
+	default_backend my_http_back # requests to
+
+frontend my_secret_front
+	bind *:8080
+	default_backend my_secret_back
+	
+backend my_http_back
+	balance roundrobin # to equal balance
+	server myweb1 [ip:port] # for not equal balance : weight 90
+	server myweb2 [ip:port] # from 1 to 255 : weight 10
+	
+backend my_secret_back
+	server mysecretweb [ip:port]
+	
+#======
+
+:wq
+
+service haproxy restart

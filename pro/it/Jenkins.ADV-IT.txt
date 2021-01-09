@@ -1,0 +1,14 @@
+CI - Continuous integration
+Commit in Repository to run Build or compilation to test (Unit, Integration, Functionality)
+CD - Continuous Delivery and Deployment
+CI + Deploy in Production
+
+CI - Commit to Source Control -> Build -> Test (+CD) -> Deploy -> Production (AWS for example)
+		GIT						Jenkins		Jenkins		Jenkins
+		
+
+1c
+
+mfi мгтс мск. рту. не ставятся номера. 
+8 сообщение. 1с - 28
+

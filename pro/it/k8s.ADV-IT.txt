@@ -1,0 +1,21 @@
+minikube version - show version
+minikube start - create vm with k8s cluster with default parameters
+minikube stop - stop vm
+minikube delete - del vm
+minikube ssh - connect docker user 2 vm by ssh 
+
+minikube start -p CLUSTER_NAME --cpus=# (cpu count) --memory=# (memory size gb/mb) --disk-size=# (hdd size gb/mb)
+
+kubectl version
+kubectl version --client
+kubectl get componentstatus
+kubectl cluster-info
+kubectl get nodes
+
+vm default users:
+root:
+docker: tcuser
+
+local kube files:
+C:\%USERNAME%\.kube
+C:\%USERNAME%\.minikube
