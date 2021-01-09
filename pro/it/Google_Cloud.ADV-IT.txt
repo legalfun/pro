@@ -1,4 +1,4 @@
-1. Экз. Associate Cloud Engineer.
+1. Associate Cloud Engineer Exam
 
 Подготовка:
 	course: GCP Fundamentals for AWS professional
@@ -42,7 +42,7 @@ Billing - Account management
  
 Google Cloud Console
 select project new project (example: PRODUCTION, STAGING, DEVELOPMENT)
-manage projects - create project delete project (for pending deletion)
+manage projects - create project delete project (for pending deletion till next day)
 customizing GCC pannel... 
 cloudshell (linux debian cli for GCP) # for any project in one place
 gcloud projects list # to view projects
@@ -87,4 +87,71 @@ gcloud init
 7. install and setup cloud sdk/gcp cli on linux
 https://cloud.google.com/sdk/docs/install#deb
 
+8. Права доступа. IAM Users Groups Permissions Roles
+Google Admin G-Suite or Active Directory
 
+GCP IAM Permission (разрешение выполнять одно действие). Формат - service.resource.verb
+
+examples:
+compute.instance.create
+compute.instance.delete
+compute.instance.start
+compute.instance.stop
+storage.buckets.create
+storage.objects.create
+storage.buckets.list
+storage.objects.list
+...
+GCP IAM Roles (набор permissions)
+primitive roles (roles/browser, roles/viewer, roles/editor, roles/owner)
+predifined roles (still exist for using)
+custom roles
+
+9. Testing IAM for gmail user
+
+STAGING project - IAM - roles - create (General Availability):
+
+add permissions: 
+filter: browser - supported. 
+resourcemanager.projects.get resourcemanager.projects.getIamPolicy 
+
+filter.table: compute.instances - 
+
+compute.instances.create compute.instances.delete compute.instances.detachDisk compute.instances.get compute.instances.list compute.instances.reset compute.instances.resume compute.instances.setLabels compute.instances.setMachineResources compute.instances.setMachineType	compute.instances.setMetadata compute.instances.setMinCpuPlatform compute.instances.setServiceAccount compute.instances.setTags	 compute.instances.start compute.instances.startWithEncryptionKey compute.instances.stop compute.instances.suspend compute.instances.update compute.instances.use # for example
+
+PRODUCTION project - IAM - roles - create:
+
+add permissions:
+compute.instances.get compute.instances.list resourcemanager.projects.get
+
+iam add # for add user to selected project
+...
+
+10. Иерархия GCP. Oraganization, Folder, Project, Resourse
+
+11. Professional Cloud Architect Exam
+
+Cloud Storage - storage classes, versioning, object status, lifecycles
+Разнпица между gcloud - поднятие и скелинг кластеров, kubectl - управление
+AppEngine - how to split, deploy, update, migrate
+Kubernetes - Pod, Cluster autoscaling and kubectl cmds
+SQL datastores - when to use Cloud SQL, Cloud Spanner, BigQuerry
+NoSQL - datastores - when to use BigTable, DataStore, Cloud FireStore
+When to use: DataPrep, DataProc, DataFlow, MemoryStore, Cloud Sub/Pub
+StackDriver - monitoring, logs, exports, activity logs
+Network Firewalls Rules - allow/deny - priority of rules
+IAM - Groups, Users, Service Accounts - Best practice
+Predifined Roles for BigQuerry and Billing, know permissions in role
+Permission while working with few projects and organization
+Migrate Data to GCP: gcutil, Transfer Appliance, Storage Transfer Service, VPN (>3Mb/sec), Interconnect (more..)
+Case Study1: https://cloud.google.com/certification/guides/cloud-architect/casestudy-mountkirkgames-rev2
+Case Study2: https://cloud.google.com/certification/guides/cloud-architect/casestudy-dress4win-rev2
+Case Study3: https://cloud.google.com/certification/guides/cloud-architect/casestudy-terramearth-rev2
+
+course: A Cloud Guru - Google Certified Professional Cloud Architect 2020
+book - Offecial Google Cloud Certified Professional Cloud Architect Study Guide
+Documentation - Google recommended Best practice and FAQ
+youtube - Google Cloud Platform channel
+tests - Brain Cert
+tests - Exam Topics
+Official Practice Test
