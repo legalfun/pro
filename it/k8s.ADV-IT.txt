@@ -1,21 +1,83 @@
-minikube version - show version
-minikube start - create vm with k8s cluster with default parameters
-minikube stop - stop vm
-minikube delete - del vm
-minikube ssh - connect docker user 2 vm by ssh 
+2. local - minikube:
 
-minikube start -p CLUSTER_NAME --cpus=# (cpu count) --memory=# (memory size gb/mb) --disk-size=# (hdd size gb/mb)
+install vbox or hyper-v
+
+minikube version
+
+minikube start
+minikube stop
+minikube delete
+
+minikube ssh
+minikube start --cpus=4 --memory=8gb --disk-size=5gb
+minikube start --cpus=2 --memory=6000mb --disk-size=4000mb
+minikube start -p MYSUPERCLUSTER
+
+# minikube start -p CLUSTER_NAME --cpus=# (cpu count) --memory=# (memory size gb/mb) --disk-size=# (hdd size gb/mb)
+
 
 kubectl version
-kubectl version --client
-kubectl get componentstatus
+kubectl version client
+kubectl get componentstatuses
 kubectl cluster-info
 kubectl get nodes
 
-vm default users:
-root:
+minikube: root:
 docker: tcuser
 
-local kube files:
-C:\%USERNAME%\.kube
-C:\%USERNAME%\.minikube
+docker images
+
+files:
+C:\Users\%USERNAME%\.kube		# kubectl & k8s cluster cfgs
+C:\Users\%USERNAME%\.minikube	# minikube files (iso,...)
+
+______
+
+3. aws:
+
+eksctl create cluster -f mycluster.yaml # to create & run k8s cluster from cfg file
+eksctl delete cluster -f mycluster.yaml # to create & run k8s cluster from cfg file
+
+apiVeersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+	name: some_kluster_name
+	region: us-west-2 # for example
+
+# vpc:
+# 	subnets:
+# 		private:
+# 			us-west-2a: { id: subnet- }
+# 			us-west-2b: { id: subnet- }
+# 			us-west-2c: { id: subnet- }
+
+nodeGroups:
+	-	name			: worker-nodes-group-1
+		instanceType	: m5.large # for example
+		desiredCapacity	: 2 # for example
+	-	name			: worker-nodes-group-2
+		instanceType	: m5.large
+		desiredCapacity	: 2
+		
+
+kubectl get nodes # to view result
+~/.kube/config # cfg location
+
+______
+
+4. gcp:
+
+gcloud version
+gcloud init
+gcloud services enable container.googleapis.com
+
+gcloud container cluster create cluster_name
+gcloud container cluster create cluster_name --num-nodes=2
+gcloud container cluster get-credentials cluster_name
+gcloud container cluster delete cluster_name
+
+kubectl version --client
+kubectl cluster-info
+kubectl get nodes
+
