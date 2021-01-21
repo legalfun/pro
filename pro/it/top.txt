@@ -1,0 +1,16 @@
+top -
+
+z - color view
+1 - cores info
+t - cores info view
+m - mem info view
+c - pass to cmd info
+b - bold 
+x - sort column select
+u/U - user proc view
+shift + v - tree view
+i - only active proc view
+</> - sort
+shift + l - find (& - move in finded)
+A - multi screen view (a,w - to move)
+
