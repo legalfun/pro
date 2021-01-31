@@ -1,21 +1,182 @@
-minikube version - show version
-minikube start - create vm with k8s cluster with default parameters
-minikube stop - stop vm
-minikube delete - del vm
-minikube ssh - connect docker user 2 vm by ssh 
+1.
 
-minikube start -p CLUSTER_NAME --cpus=# (cpu count) --memory=# (memory size gb/mb) --disk-size=# (hdd size gb/mb)
+open source: github.com/kubernetes	google, go	2014
+automate deploy, scaling, manage
+comutation with docker
+
+service descovery and load balancer
+storage orchestration
+automated rollouts and rollback
+automatic bin packing
+self-healing
+secret and config mgmt
+
+cluster - nodes (master (mgmt), worker(for containers))
+cmd - master - workers
+
+master: kube controller, cloud controller -> cloud,
+etcd (DB) <-> kube api server <- kube sheduller
+					|
+kubelet,	kubelet, ...
+kubeproxy,	kubeproxy, ...
+	kubenodes
+
+...	
+
+2. local - minikube:
+
+install vbox or hyper-v
+
+minikube version
+
+minikube start
+minikube stop
+minikube delete
+
+minikube ssh
+minikube start --cpus=4 --memory=8gb --disk-size=5gb
+minikube start --cpus=2 --memory=6000mb --disk-size=4000mb
+minikube start -p MYSUPERCLUSTER
+
+# minikube start -p CLUSTER_NAME --cpus=# (cpu count) --memory=# (memory size gb/mb) --disk-size=# (hdd size gb/mb)
+
 
 kubectl version
-kubectl version --client
-kubectl get componentstatus
+kubectl version client
+kubectl get componentstatuses
 kubectl cluster-info
 kubectl get nodes
 
-vm default users:
-root:
+minikube: root:
 docker: tcuser
 
-local kube files:
-C:\%USERNAME%\.kube
-C:\%USERNAME%\.minikube
+docker images
+
+files:
+C:\Users\%USERNAME%\.kube		# kubectl & k8s cluster cfgs
+C:\Users\%USERNAME%\.minikube	# minikube files (iso,...)
+
+______
+
+3. aws:
+
+eksctl create cluster -f mycluster.yaml # to create & run k8s cluster from cfg file
+eksctl delete cluster -f mycluster.yaml # to create & run k8s cluster from cfg file
+
+apiVeersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+	name: some_kluster_name
+	region: us-west-2 # for example
+
+# vpc:
+# 	subnets:
+# 		private:
+# 			us-west-2a: { id: subnet- }
+# 			us-west-2b: { id: subnet- }
+# 			us-west-2c: { id: subnet- }
+
+nodeGroups:
+	-	name			: worker-nodes-group-1
+		instanceType	: m5.large # for example
+		desiredCapacity	: 2 # for example
+	-	name			: worker-nodes-group-2
+		instanceType	: m5.large
+		desiredCapacity	: 2
+		
+
+kubectl get nodes # to view result
+~/.kube/config # cfg location
+
+______
+
+4. gcp:
+
+install: google cloud sdk (to create cluster), kubectl (for manage cluster)
+
+gcloud version
+gcloud init
+gcloud services enable container.googleapis.com
+
+gcloud container clusters create cluster_name
+gcloud container clusters create cluster_name --num-nodes=2 # --* optional
+gcloud container clusters get-credentials cluster_name # kubectl for cluster connecting/config and for switch to cluster_name
+gcloud container clusters delete cluster_name
+
+kubectl version --client
+kubectl cluster-info
+kubectl get nodes
+
+______
+
+5. free kubernets for edu and test:
+
+labs.play-with-k8s.com # for use for 4 hours
+add instance (4 instances available)
+...
+
+6. docker:
+
+1. php app create
+2. docker file create: appache, php, php app
+3. docker image from docker file create
+4. dockerhub repository create
+5. upload docker image to dockerhub
+6. docker image on dockerhub testing
+
+vim index.php
+
+<?php
+
+$ip_server = $_SERVER['SERVER_ADDR'];
+
+echo "<h1>Hello from Vanara Kuberntes for ADV-IT practice!"</h1><br>";
+echo "Server IP address is: $ip_server", "<br><p>";
+echo "Made by <font color=blue>Vanara Sugriva";
+
+?>
+
+vim Dockerfile:
+
+FROM amazonlinux
+
+RUN yum -y update
+RUN yum -y install httpd
+RUN yum -y install php
+
+COPY ./index.php /var/www/html/index.php
+
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+
+EXPOSE 80
+
+
+docker build -t vsk8sapp . # create DockerImage with local Вockerfile
+
+docker images # show local DockerImages
+
+hub.docker.com/repository
+create ... k8s
+
+docker tag vsk8sapp:latest vanara/k8s:latest # DockerImage rename
+docker login # to DockerHub
+
+docker push vanara/k8s:latest # DockerImage to Repo
+
+docker rmi XXXXXXXX -f # delete local DockerImage with ID
+docker run -it -p 1234:80 vanara/k8s:latest # run container on port 1234 with remote DockerImage on port 80 open interactive
+
+07. cubernetes. objects:
+Main:
+0. Container (not k8s obj)
+1. Pod (Containers)
+2. Deployment (Pods)
+3. Service (Pods in Deployments)
+4. Nodes (Servers)
+5. Cluster (Servers)
+
++ DeamonSets, StatefulSets, ReplicaSets, Secrets, PV, SVC, LoadBalancers, ConfigMaps, Vertical Pod Autoscaler, Horizont Pod Autoscaler, ...
+
+08. 
+
