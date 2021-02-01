@@ -40,7 +40,6 @@ minikube start -p MYSUPERCLUSTER
 
 # minikube start -p CLUSTER_NAME --cpus=# (cpu count) --memory=# (memory size gb/mb) --disk-size=# (hdd size gb/mb)
 
-
 kubectl version
 kubectl version client
 kubectl get componentstatuses
@@ -114,6 +113,10 @@ ______
 
 labs.play-with-k8s.com # for use for 4 hours
 add instance (4 instances available)
+# see instruction for connect to and activate nodes
+kubectl get nodes # to view on master (control plane) or remote
+kubectl get nodes --show-lables
+kubectl label node node2 node-role.kubernetes.io/worker= # to add label
 ...
 
 6. docker:
@@ -179,4 +182,99 @@ Main:
 + DeamonSets, StatefulSets, ReplicaSets, Secrets, PV, SVC, LoadBalancers, ConfigMaps, Vertical Pod Autoscaler, Horizont Pod Autoscaler, ...
 
 08. 
+
+kubectl get nodes
+kubectl get pods
+kubectl run zdrava --generator=run-pod/v1 --image=httpd:latest --port=80 #(any docker image)
+
+kubectl delete pods zdrava
+kubectl describe pods zdrava
+kubectl describe pods
+kubectl describe nodes
+...
+kubectl exec [pod_name] date # for cmd exec (date, for example)
+kubectl exec -it [pod_name] sh # for exec cmd interactive - foreground - fg
+
+kubectl logs [pod_name]
+kubectl port-forward [pod_name] 7788:80 # port forwarding local:remote - fg
+
+# for create pod from file
+
+vim vs_web-ver1.yaml
+
+apiVersion : v1
+kind: Pod
+metadata:
+  name: zdrava
+spec:
+  containers:
+    - name : container-apache # for example
+	  image: httpd:latest # for example
+:wq
+
+# no tab in yaml
+
+kubectl apply -f vs_web-ver1.yaml # to run create
+
+vim vs_web-ver1.yaml # to add port under image:
+      ports:
+        - containerPort: 80
+
+kubectl delete -f vs_web-ver1.yaml
+kubectl apply -f vs_web-ver1.yaml
+		  
+#       image: httpd:latest can change with no delete/apply - just apply
+
+vim vs_web-ver2.yaml
+
+apiVersion : v1
+kind: Pod
+metadata:
+  name   : zdrava
+  labels :
+    env  : prod
+    app  : main
+    tier : frontend
+    owner: VanaraSugriva
+spec:
+  containers:
+    - name : container-apache
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+
+vim pod-app.yaml
+
+apiVersion : v1
+kind: Pod
+metadata:
+  name   : vs-app
+  labels :
+    env  : prod
+    app  : main
+    tier : frontend
+    owner: VanaraSugriva
+spec:
+  containers:
+    - name : container-web
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+
+    - name : container-api
+      image: tomcat:8.5.38
+      ports:
+        - containerPort: 8080
+
+
+
+
+
+
+
+
+
+
+
+
 
